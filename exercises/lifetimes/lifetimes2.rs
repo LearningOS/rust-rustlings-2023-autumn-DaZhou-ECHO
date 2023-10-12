@@ -1,3 +1,4 @@
+// I AM NOT DONE
 // lifetimes2.rs
 //
 // So if the compiler is just validating the references passed to the annotated
@@ -6,9 +7,8 @@
 // Execute `rustlings hint lifetimes2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
-fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+fn longest(x: & str, y: & str) -> &'static str {
     if x.len() > y.len() {
         x
     } else {
