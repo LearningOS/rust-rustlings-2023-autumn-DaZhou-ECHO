@@ -30,7 +30,10 @@ fn verify_test() {
     assert_eq!(41, price3);
     assert_eq!(65, price4);
 }
-fn main()
-{
-    
+fn main(){
+
+}
+fn calculate_price_of_apples(x:i32)->i32{
+    x
+
 }
