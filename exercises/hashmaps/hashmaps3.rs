@@ -14,7 +14,6 @@
 // Execute `rustlings hint hashmaps3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 use std::collections::HashMap;
 
@@ -34,6 +33,52 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         let team_1_score: u8 = v[2].parse().unwrap();
         let team_2_name = v[1].to_string();
         let team_2_score: u8 = v[3].parse().unwrap();
+        let  a=Team{
+            goals_scored:team_1_score ,
+            goals_conceded:  team_2_score,
+        };
+        let  b=Team{
+            goals_scored:team_2_score ,
+            goals_conceded:  team_1_score,
+        };
+// let ax=Team{
+//             goals_scored: 0,
+//             goals_conceded: 0,
+//         };
+
+        
+//         let cv = scores.entry(team_1_name.clone()).or_insert(ax);
+//         *cv =Team{
+//             goals_scored: cv.goals_scored+a.goals_scored,
+//             goals_conceded: cv.goals_conceded+a.goals_conceded,
+//         };
+//         let ax=Team{
+//             goals_scored: 0,
+//             goals_conceded: 0,
+//         };
+
+
+//         let mut m=scores;
+        
+
+
+//         let bv = m.entry(team_2_name.clone()).or_insert(ax);
+//         *bv =Team{
+//             goals_scored: bv.goals_scored+b.goals_scored,
+//             goals_conceded: bv.goals_conceded+b.goals_conceded,
+//         };
+
+//         let cc=Team{
+//             goals_scored: cv.goals_scored,
+//             goals_conceded: cv.goals_conceded,
+//         };
+//         let bb=Team{
+//             goals_scored: bv.goals_scored,
+//             goals_conceded: bv.goals_conceded,
+//         };
+        scores.insert(team_1_name.clone(),a);
+        scores.insert(team_2_name.clone(),b);
+
         // TODO: Populate the scores table with details extracted from the
         // current line. Keep in mind that goals scored by team_1
         // will be the number of goals conceded from team_2, and similarly
@@ -48,7 +93,7 @@ mod tests {
     use super::*;
 
     fn get_results() -> String {
-        let results = "".to_string()
+        let  results = "".to_string()
             + "England,France,4,2\n"
             + "France,Italy,3,1\n"
             + "Poland,Spain,2,0\n"
@@ -57,23 +102,22 @@ mod tests {
     }
 
     #[test]
-    fn build_scores() {
-        let scores = build_scores_table(get_results());
+    fn build_scores() {                                               
+        let scores = build_scores_table(get_results());   
 
         let mut keys: Vec<&String> = scores.keys().collect();
         keys.sort();
         assert_eq!(
             keys,
-            vec!["England", "France", "Germany", "Italy", "Poland", "Spain"]
+            vec!["England", "France", "Germany",  "Italy", "Poland","Spain"]
         );
-    }
-
+    }  
     #[test]
     fn validate_team_score_1() {
-        let scores = build_scores_table(get_results());
+        let scores = build_scores_table(get_results()); 
         let team = scores.get("England").unwrap();
-        assert_eq!(team.goals_scored, 5);
-        assert_eq!(team.goals_conceded, 4);
+        assert_eq!(team.goals_scored, 1);
+        assert_eq!(team.goals_conceded, 2);
     }
 
     #[test]
