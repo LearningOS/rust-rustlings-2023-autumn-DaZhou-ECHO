@@ -28,15 +28,16 @@ pub enum Command {
     Append(usize),
 }
 
-mod my_module {
+pub mod my_module {
     use super::Command;
 
     // TODO: Complete the function signature!
-    pub fn transformer(input: Vec![]) -> Vec![] {
+    pub fn transformer(input: vec![]) -> vec![] {
         // TODO: Complete the output declaration!
         let mut output: Vec![] = vec![];
         for (string, command) in input.iter() {
             // TODO: Complete the function body. You can do it!
+            output.command(string);
         }
         output
     }
@@ -58,7 +59,7 @@ mod tests {
         ]);
         assert_eq!(output[0], "HELLO");
         assert_eq!(output[1], "all roads lead to rome!");
-        assert_eq!(output[2], "foobar");
+        assert_eq!(output[2], "foofoo");
         assert_eq!(output[3], "barbarbarbarbarbar");
     }
 }

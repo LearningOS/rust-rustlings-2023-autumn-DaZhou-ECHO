@@ -25,18 +25,51 @@ impl ParsePosNonzeroError {
         ParsePosNonzeroError::Creation(err)
     }
     // TODO: add another error conversion function here.
-    // fn from_parseint...
+     fn from_parseint(err : ParseIntError) -> ParsePosNonzeroError{
+        ParsePosNonzeroError::ParseInt(err)
+     }
 }
-
 fn parse_pos_nonzero(s: &str) -> Result<PositiveNonzeroInteger, ParsePosNonzeroError> {
     // TODO: change this to return an appropriate error instead of panicking
     // when `parse()` returns an error.
-    let x: i64 = s.parse().unwrap();
-    PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
+
+
+     // match  s.parse::<i64>(){
+    //     Ok(_) => ParsePosNonzeroError::from_parseint,
+    //     _ =>ParsePosNonzeroError::from_creation
+    // }
+    //PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
+    //PositiveNonzeroInteger::new(s.parse().unwrap()).map_err(ParsePosNonzeroError::from_creation)
+
+    // let a= match  s.parse(){
+    //     Ok(x) => if(x) {
+    //         PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
+    //     },
+    //     others =>  PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_parseint)
+
+    // };
+    // a
+    let x = match s.parse::<i64>() {
+ 
+        Ok(x) => PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation),
+
+        Err(e) =>Err(ParsePosNonzeroError::ParseInt(ParseIntError{kind:ParsePosNonzeroError})) //PositiveNonzeroInteger::new(1).map_err(ParsePosNonzeroError::from_creation),
+    };
+    x
+
+
+    // let x: i64 = s.parse().unwrap();
+    // PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
+    
+
 }
 
-// Don't change anything below this line.
 
+
+
+
+
+// Don't change anything below this line.
 #[derive(PartialEq, Debug)]
 struct PositiveNonzeroInteger(u64);
 
