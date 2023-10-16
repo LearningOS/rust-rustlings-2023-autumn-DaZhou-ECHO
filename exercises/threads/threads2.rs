@@ -16,7 +16,7 @@ use std::time::Duration;
 struct JobStatus {
     jobs_completed: u32,
 }
-
+use core::cell::RefCell;
 fn main() {
     let status = Arc::new(JobStatus { jobs_completed: 0 });
     let mut handles = vec![];
@@ -25,15 +25,18 @@ fn main() {
         let handle = thread::spawn(move || {
             thread::sleep(Duration::from_millis(250));
             // TODO: You must take an action before you update a shared value
+            
+            let status_shared=RefCell::new(status);
             status_shared.jobs_completed += 1;
         });
         handles.push(handle);
     }
     for handle in handles {
-        handle.join().unwrap();
+       // handle.join().unwrap();
         // TODO: Print the value of the JobStatus.jobs_completed. Did you notice
         // anything interesting in the output? Do you have to 'join' on all the
         // handles?
-        println!("jobs completed {}", ???);
+
+        println!("jobs completed {:?}", handle.join().unwrap());
     }
 }
