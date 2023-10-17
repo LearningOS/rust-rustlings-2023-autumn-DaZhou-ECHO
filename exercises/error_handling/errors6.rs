@@ -32,45 +32,11 @@ fn parse_pos_nonzero(s: &str) -> Result<PositiveNonzeroInteger, ParsePosNonzeroE
     
     // let x: i64 = s.parse().unwrap();
     // PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
-
-
-
-    let x: i64 = s.parse().map_err(ParsePosNonzeroError::from_parseint)?;
-    PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
+    let x: i64 = s.parse().map_err(ParsePosNonzeroError::from_parseint)?;     //看是不是整数
+    PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)   //看是不是符合范围
     // TODO: change this to return an appropriate error instead of panicking
     // when `parse()` returns an error.
-
-
-     // match  s.parse::<i64>(){
-    //     Ok(_) => ParsePosNonzeroError::from_parseint,
-    //     _ =>ParsePosNonzeroError::from_creation
-    // }
-    //PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
-    //PositiveNonzeroInteger::new(s.parse().unwrap()).map_err(ParsePosNonzeroError::from_creation)
-
-    // let a= match  s.parse(){
-    //     Ok(x) => if(x) {
-    //         PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
-    //     },
-    //     others =>  PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_parseint)
-
-    // };
-    // a
-    // let x = match s.parse::<i64>() {
- 
-    //     Ok(x) => PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation),
-
-    //     Err(e) =>Err(ParsePosNonzeroError::ParseInt(ParseIntError{kind:ParsePosNonzeroError})) //PositiveNonzeroInteger::new(1).map_err(ParsePosNonzeroError::from_creation),
-    // };
-    // x
-
-
-    
-
 }
-
-
-
 
 // Don't change anything below this line.
 #[derive(PartialEq, Debug)]
