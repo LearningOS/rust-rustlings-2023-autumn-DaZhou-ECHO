@@ -15,7 +15,7 @@ pub fn capitalize_first(input: &str) -> String {
      let mut c = input.chars();
      match c.next() {
         None => String::new(),
-         Some(first) => first.to_string().to_uppercase(),
+        Some(first) => first.to_string().to_uppercase(),
      };
     let mut x=String::new();
     for i in input {
@@ -41,7 +41,6 @@ pub fn capitalize_words_string(words: &[&str]) -> String {
     for i in words{
         x.push_str(i.clone());
     }
-
     x
 }
 
