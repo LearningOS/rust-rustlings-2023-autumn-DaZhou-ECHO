@@ -8,20 +8,16 @@
 //
 // Execute `rustlings hint iterators3` or use the `hint` watch subcommand for a
 // hint.
-
 #[derive(Debug, PartialEq, Eq)]
 pub enum DivisionError {
     NotDivisible(NotDivisibleError),
     DivideByZero,
 }
-
 #[derive(Debug, PartialEq, Eq)]
 pub struct NotDivisibleError {
     dividend: i32,
     divisor: i32,
 }
-
-
 // Calculate `a` divided by `b` if `a` is evenly divisible by `b`.
 // Otherwise, return a suitable error.
 pub fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
@@ -47,34 +43,10 @@ fn result_with_list() -> Result<Vec<i32>, String> {
     let numbers = vec![27, 297, 38502, 81];
     let division_results = numbers.into_iter().map(|n| divide(n, 27));
 
-    // Process the results and handle errors
-    let mut ok_results = vec![];
-    let mut error_messages = Vec::new();
+    let results: Result<Vec<i32>, DivisionError> = division_results.collect();
 
-    for result in division_results {
-        match result {
-            Ok(value) => ok_results.push(value),
-            Err(division_error) => {
-                match division_error {
-                    DivisionError::NotDivisible(not_divisible_err) => {
-                        error_messages.push(format!("NotDivisible({:?})", not_divisible_err));
-                    }
-                    DivisionError::DivideByZero => error_messages.push("DivideByZero".to_string()),
-                }
-            }
-        }
-    }
-
-    if error_messages.is_empty() {
-        Ok(ok_results)
-    } else {
-        Err(error_messages.join(", "))
-    }
+    results.map_err(|err| format!("{:?}", err))
 }
-
-
-
-
 
 // Complete the function and return a value of the correct type so the test
 // passes.
@@ -82,14 +54,11 @@ fn result_with_list() -> Result<Vec<i32>, String> {
 fn list_of_results() -> Vec<Result<i32, DivisionError>> {
     let numbers = vec![27, 297, 38502, 81];
     let division_results = numbers.into_iter().map(|n| divide(n, 27));
-
     // Process the results and handle errors
     let mut results = vec![];
-
     for result in division_results {
         results.push(result);
     }
-
     results
 }
 
