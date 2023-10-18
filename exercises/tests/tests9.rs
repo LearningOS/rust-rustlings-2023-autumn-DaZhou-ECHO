@@ -27,7 +27,6 @@
 // line of code in the testcase should call the same function.
 //
 // You should NOT modify any existing code except for adding two lines of attributes.
-
 extern "Rust" {
     fn my_demo_function(a: u32) -> u32;
     fn my_demo_function_alias(a: u32) -> u32;
@@ -53,6 +52,11 @@ mod tests {
         // SAFETY: We know those functions are aliases of a safe
         // Rust function.
         unsafe {
+            extern "Rust" {
+                fn my_demo_function(a: u32) -> u32;
+                fn my_demo_function_alias(a: u32) -> u32;
+            }
+
             my_demo_function(123);
             my_demo_function_alias(456);
         }
