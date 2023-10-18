@@ -29,10 +29,6 @@ fn send_tx(q: Arc<Queue>, tx: mpsc::Sender<u32>) -> () {
     let qc1 = Arc::clone(&q);
     let qc2 = Arc::clone(&q);
     let tx1 = tx.clone();
-    let tx2 = tx;
-
-    thread::spawn(move || {
-        for val in &qc1.first_half {
             println!("sending {:?}", val);
             tx1.send(*val).unwrap();
             thread::sleep(Duration::from_millis(50));
