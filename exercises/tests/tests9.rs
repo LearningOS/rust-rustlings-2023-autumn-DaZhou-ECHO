@@ -26,14 +26,15 @@
 // module Foo. the `my_demo_function_alias` is an alias for `my_demo_function`, so the two
 // line of code in the testcase should call the same function.
 //
-// You should NOT modify any existing code except for adding two lines of attributes.
+// You should NOT modify any existing code except for adding two lines of attributes.
+
 extern "Rust" {
     fn my_demo_function(a: u32) -> u32;
     fn my_demo_function_alias(a: u32) -> u32;
 }
 
 mod Foo {
-    // No `extern` equals `extern "Rust"`.
+    #[no_mangle]
     fn my_demo_function(a: u32) -> u32 {
         a
     }

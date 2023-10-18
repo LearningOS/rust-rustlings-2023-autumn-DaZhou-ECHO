@@ -33,7 +33,8 @@
 // to pass this exercise.
 //
 // Execute `rustlings hint tests7` or use the `hint` watch subcommand for a
-// hint.
+// hint.
+
 fn main() {}
 
 #[cfg(test)]
