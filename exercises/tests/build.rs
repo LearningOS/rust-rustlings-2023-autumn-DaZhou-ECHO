@@ -10,9 +10,13 @@ fn main() {
         .duration_since(std::time::UNIX_EPOCH)
         .unwrap()
         .as_secs(); // What's the use of this timestamp here?
+   
     let your_command = format!(
         "Your command here with {}, please checkout exercises/tests/build.rs",
         timestamp
+        cc::Build::new()
+        .file("exercises\tests\tests7.rs")   //相对路径
+        .compile("tests7");
     );
     println!("cargo:{}", your_command);
 
@@ -21,4 +25,7 @@ fn main() {
     // Cargo about that.
     let your_command = "Your command here, please checkout exercises/tests/build.rs";
     println!("cargo:{}", your_command);
+    cc::Build::new()
+    .file("exercises\tests\tests8.rs")   //相对路径
+    .compile("tests8");
 }

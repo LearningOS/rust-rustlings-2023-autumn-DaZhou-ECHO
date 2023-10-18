@@ -1,3 +1,4 @@
+// I AM NOT DONE
 // tests7.rs
 //
 // When building packages, some dependencies can neither be imported in
@@ -32,10 +33,7 @@
 // to pass this exercise.
 //
 // Execute `rustlings hint tests7` or use the `hint` watch subcommand for a
-// hint.
-
-// I AM NOT DONE
-
+// hint.
 fn main() {}
 
 #[cfg(test)]
