@@ -35,7 +35,7 @@ fn send_tx(q: Arc<Queue>, tx: mpsc::Sender<u32>) {
            //thread::sleep(Duration::from_millis(1));
         }
     });
-    x1.join().unwrap();
+    x1//.join().unwrap();
 
     let x2=thread::spawn(move || {
         for val in &qc2.second_half {
